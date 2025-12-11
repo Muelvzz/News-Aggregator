@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, APIRouter
 from dotenv import load_dotenv
 import httpx, os
 
-from ..schemas import NewsOut, SearchNews
+from backend.schemas import SearchNews
 
 load_dotenv()
 
@@ -15,10 +15,10 @@ WORLD_NEWS_API_KEY = os.getenv("WORLD_NEWS_API")
 BASE_URL = os.getenv("BASE_URL")
 
 @router.get("/view-all")
-async def get_news(text: str):
+async def get_news():
     params = {
         "api-key": WORLD_NEWS_API_KEY,
-        "text": text,
+        "text": "technology",
         "language": "en"
     }
 
